@@ -67,7 +67,18 @@
       }
 
       .person {
-        width: 95%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 85%;
+
+        .profile-photo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
@@ -298,12 +309,24 @@
     .cards {
       display: grid;
       grid-template-columns: auto auto;
-      grid-gap: 10px;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      width: 90%;
+      grid-gap: 10px;
 
       .person {
-        width: 95%;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 85%;
+
+        .profile-photo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
