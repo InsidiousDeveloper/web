@@ -27,7 +27,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://mytrialweb.herokuapp.com/",
+  "proxy": "https://mytrialweb.herokuapp.com/contact",
   "browserslist": {
     "production": [
       ">0.2%",
