@@ -6,6 +6,32 @@
     overflow-x: hidden;
   }
 
+  body {
+
+    nav {
+
+      div.elements-wrapper {
+
+        .logo {
+          width: 2rem;
+          height: 2rem;
+        }
+
+        ul.tools {
+
+          li {
+            margin: auto 5px;
+
+            a {
+              margin: auto 5px;
+              padding: 5px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .container.main {
 
     .content {
@@ -180,6 +206,29 @@
     }
   }
 
+  .faq-banner {
+    background-size: contain;
+  }
+
+  .container.faqs {
+
+    .faq-wrapper {
+
+      .faq {
+        width: 90%;
+        padding: 1.5rem;
+
+        .question {
+          font-size: $fontMedium;
+        }
+
+        .answer {
+          font-size: $fontSmall;
+        }
+      }
+    }
+  }
+
   body {
 
     .contact {
@@ -202,5 +251,196 @@
 
   .contact-banner {
     background-position-x: 60%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  .popular {
+
+    .courses {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 5px;
+      justify-content: center;
+      align-items: center;
+
+      .course {
+        width: 100%;
+      }
+    }
+  }
+
+  .container.count {
+
+    .content {
+
+      .count-down {
+
+        .tabs {
+
+          .tab {
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            margin: 2rem 2rem;
+
+            .time {
+              font-size: $fontXL;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .people {
+
+    .cards {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      .person {
+        width: 95%;
+      }
+    }
+  }
+
+  .container.events {
+
+    .content {
+
+      .banners {
+        padding: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        .banner {
+          width: 85%;
+
+          .content-wrapper {
+            padding: 1rem;
+            width: 20rem;
+            height: 15rem;
+
+            .time-place {
+
+              .vl {
+                width: 1px;
+              }
+
+              .date {
+
+                .day {
+                  font-size: $fontXL;
+                }
+              }
+
+              .place {
+                font-size: $fontMedium;
+              }
+            }
+
+            .short-info {
+              font-size: 1.05rem;
+            }
+
+            .more {
+              padding: 15px;
+              font-size: $fontSmall;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container.feedbacks {
+
+    .content {
+
+      .clients {
+        padding: 15px;
+
+        .client {
+          width: 85%;
+          flex-direction: column;
+
+          img {
+            width: 100%;
+          }
+
+          .client-info {
+            // padding: 10px;
+            margin-left: 0;
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+  .popular {
+
+    .courses {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      align-items: center;
+
+      .course {
+        width: 95%;
+        
+        .upper {
+          width: 100%;
+        }
+
+        .lower {
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .people {
+
+    .cards {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 20px;
+      align-items: center;
+      justify-content: center;
+
+      .person {
+        padding: 0;
+        width: 95%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .popular {
+
+    .courses {
+      align-items: center;
+
+      .course {
+        width: 31%;
+        
+        .upper {
+          width: 100%;
+        }
+
+        .lower {
+          padding: 20px;
+        }
+      }
+    }
   }
 }
