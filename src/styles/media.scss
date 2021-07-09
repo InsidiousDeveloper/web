@@ -1,0 +1,206 @@
+@import "variables";
+
+@media (max-width: 575px) {
+
+  body, .container, .content {
+    overflow-x: hidden;
+  }
+
+  .container.main {
+
+    .content {
+
+      .offer {
+
+        .btns {
+          flex-direction: column;
+          align-items: center;
+
+          button {
+            margin-top: 1rem;
+          }
+        }
+
+        p {
+          font-size: $fontSmall;
+        }
+      }
+    }
+  }
+
+  .feature, .people {
+
+    .cards {
+      flex-direction: column;
+      justify-content: center;
+
+      .card {
+        margin-top: 2rem;
+        width: 95%;
+
+      }
+
+      .person {
+        width: 95%;
+      }
+    }
+  }
+
+  .popular {
+
+    .courses {
+      flex-direction: column;
+
+      .course {
+        width: 95%;
+      }
+    }
+  }
+
+  .container.count {
+
+    .content {
+
+      .count-down {
+
+        .tabs {
+
+          .tab {
+            justify-content: center;
+            width: 4.5rem;
+            height: 4rem;
+            margin: 2rem 0.2rem;
+
+            .time {
+              font-size: $fontBig;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container.events {
+
+    .content {
+
+      .banners {
+        padding: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        .banner {
+          width: 95%;
+
+          .content-wrapper {
+            padding: 0.5rem;
+            width: 60%;
+            height: 70%;
+
+            .time-place {
+
+              .vl {
+                width: 1px;
+              }
+
+              .date {
+
+                .day {
+                  font-size: $fontBig;
+                }
+              }
+
+              .place {
+                font-size: $fontSmall;
+              }
+            }
+
+            .short-info {
+              font-size: $fontSmall;
+            }
+
+            .more {
+              padding: 10px;
+              font-size: $fontTiny;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container.feedbacks {
+
+    .content {
+
+      .clients {
+        flex-direction: column;
+
+        .client {
+          width: 95%;
+          flex-direction: column;
+
+          img {
+            width: 95%;
+          }
+
+          .client-info {
+            padding: 10px;
+            margin-left: 0;
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+
+    .info-section > div {
+      margin-top: 1rem;
+    }
+
+    .info-section {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+
+
+      .services {
+
+        ul {
+
+          li {
+            list-style-type: none;
+          }
+        }
+      }
+    }
+  }
+
+  body {
+
+    .contact {
+
+      .content {
+        min-height: 50vh;
+        overflow: hidden;
+
+        .contact-form {
+
+          div.form {
+            width: 20rem;
+            grid-template-columns: auto;
+            min-width: unset;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-banner {
+    background-position-x: 60%;
+  }
+}
