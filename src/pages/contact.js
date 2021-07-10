@@ -1,8 +1,30 @@
 import React, {useEffect, useState} from "react"
 import {useHttp} from "../hooks/http.hook"
 import Aos from 'aos'
+import i18n from "i18next"
+import { initReactI18next, useTranslation } from "react-i18next"
+import LanguageDetector from 'i18next-browser-languagedetector'
+import HttpApi from 'i18next-http-backend'
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(LanguageDetector)
+  .use(HttpApi)
+  .init({
+    fallbackLng: 'en',
+    detection: {
+        order: ['htmlTag', 'cookie', 'localstorage', 'path', 'subdomain'],
+        caches: ['cookie'],
+    },
+    react: {useSuspense: false},
+    backend: {
+        loadPath: '/assets/locales/{{lng}}/translation.json',
+    }
+  })
 
 export const Contact = () => {
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         Aos.init({
@@ -43,7 +65,7 @@ export const Contact = () => {
         <>
             <div className="contact-banner">
                 <div className="content">
-                    <div className="title">Contact Us</div>
+                    <div className="title">{t('contact_us')}</div>
                 </div>
             </div>
             <div className="container contact">
@@ -56,10 +78,9 @@ export const Contact = () => {
                         <div className="drop drop-5"></div>
                         <div className="form" data-aos="fadeIn">
                             <div className="left">
-                                <h3>Оставайтесь на связи</h3>
                                 <input
                                     type="text"
-                                    placeholder="Your Full name"
+                                    placeholder={t('full_name')}
                                     required={true}
                                     name="name"
                                     value={form.name}
@@ -67,21 +88,21 @@ export const Contact = () => {
                                 /><br/>
                                 <input
                                     type="email"
-                                    placeholder="Your Email"
+                                    placeholder={t('email')}
                                     name="email"
                                     value={form.email}
                                     onChange={handleChanges}
                                 /><br/>
                                 <input
                                     type="text"
-                                    placeholder="Your Phone number"
+                                    placeholder={t('phone_number')}
                                     required={true}
                                     name="phone"
                                     value={form.phone}
                                     onChange={handleChanges}
                                 /><br/>
                                 <textarea
-                                    placeholder="Your message"
+                                    placeholder={t('message')}
                                     name="message"
                                     value={form.message}
                                     onChange={handleChanges}
@@ -91,7 +112,7 @@ export const Contact = () => {
                                 <input
                                     className="button"
                                     type="button"
-                                    value="Send"
+                                    value={t('send')}
                                     disabled={loading}
                                     onClick={formHandler}
                                 /><br/>

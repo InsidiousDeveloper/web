@@ -7,10 +7,14 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "i18next-http-backend": "^1.2.6",
     "jquery": "^3.6.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
@@ -27,7 +31,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://mytrialweb.herokuapp.com",
+  "proxy": "https://mytrialweb.herokuapp.com:5000",
   "browserslist": {
     "production": [
       ">0.2%",

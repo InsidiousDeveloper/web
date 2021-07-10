@@ -34,11 +34,12 @@ body {
   nav {
     width: 100%;
     padding: 10px;
-    background: #99999920;
-    position: absolute;
+    background: linear-gradient(to bottom, #D3CCE3, #E9E4F0);
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
+    z-index: 5;
 
     div.elements-wrapper {
       @include maxWidth();
@@ -60,27 +61,55 @@ body {
         width: max-content;
         list-style-type: none;
 
-        li {
+        .hamburger {
+          display: none;
+        }
+
+        .hamburger.open {
+          animation: rot .3s linear;
+        }
+
+        @keyframes rot {
+          0% {transform: translate(0);}
+          100% {transform: translate(100%);}
+        }
+
+        .links-wrapper {
           display: flex;
-          margin: auto 10px;
+          width: max-content;
 
-          a {
-            display: block;
-            margin: 0 10px;
-            padding: 15px 20px;
-            cursor: pointer;
-            font-family: 'Rubik';
-            color: $darkBlue;
-            text-decoration: none;
-            transition: .3s;
-          }
-
-          .current {
-            color: $yellow;
-          }
-
-          a:hover, a:active {
-            color: $yellow;
+          li {
+            display: flex;
+            margin: auto 10px;
+  
+            a, .toggler {
+              display: block;
+              margin: 0 10px;
+              padding: 15px 20px;
+              cursor: pointer;
+              font-family: 'Rubik';
+              color: $darkBlue;
+              text-decoration: none;
+              transition: .3s;
+            }
+  
+            .toggler {
+              display: flex;
+              padding: 10px 15px;
+              text-transform: capitalize;
+              background: none;
+              border: none;
+              margin: 0;
+              font-size: $fontSmall;
+            }
+  
+            .current {
+              color: $yellow;
+            }
+  
+            a:hover, a:active {
+              color: $yellow;
+            }
           }
         }
       }
@@ -311,7 +340,7 @@ body {
       width: 31%;
       text-align: left;
       background: $veryLightPurple;
-      transition: .3s;
+      transition: .5s;
 
       .card-title {
         margin-top: 15px;
@@ -355,6 +384,7 @@ body {
         overflow: hidden;
 
         img {
+          width: 100%;
           transition: .3s;
         }
       }
@@ -711,6 +741,7 @@ ul.social {
     height: 2rem;
     border-radius: 50%;
     overflow: hidden;
+    transition: .3s;
 
     a {
       display: flex;
@@ -739,11 +770,14 @@ ul.social {
     a.facebook {
       background: #3b5998;
     }
-    a.twitter {
-      background: #00acee;
-    }
     a.instagram {
       background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    }
+    a.telegram {
+      background: #0088cc	;
+    }
+    a.tiktok {
+      background: #000;
     }
   }
 }

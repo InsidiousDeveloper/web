@@ -18,13 +18,78 @@
         }
 
         ul.tools {
+          position: relative;
 
-          li {
-            margin: auto 5px;
+          .hamburger, .hamburger:after, .hamburger:before {
+            position: relative;
+            display: block;
+            width: 2rem;
+            height: 0.2rem;
+            border-radius: 10px;
+            background: #333;
+          }
+          .hamburger:before {
+            content: '';
+            position: absolute;
+            top: -0.4rem;
+          }
+          .hamburger:after {
+            content: '';
+            position: absolute;
+            top: 0.4rem;
+          }
 
-            a {
-              margin: auto 5px;
-              padding: 5px 10px;
+          .links-wrapper {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            flex-direction: column;
+            width: 15rem;
+            height: 100vh;
+            background: rgba($color: #434b59, $alpha: 0.9);
+            z-index: 100;
+            opacity: 0;
+            transform: .3s;
+            backdrop-filter: blur(5px);
+
+            .hamburger {
+              position: absolute;
+              top: 25px;
+              right: 10px;
+              display: block;
+              width: 2rem;
+              height: 0.2rem;
+              border-radius: 10px;
+              background: #333;
+            }
+
+            li {
+              margin: 1rem 5px;
+  
+              a {
+                margin: auto 5px;
+                padding: 5px 10px;
+                width: 100%;
+              }
+            }
+
+            .current {
+              color: white !important;
+              background: #8f95a1;
+            }
+          }
+
+          .menu {
+            display: block;
+            padding-top: 20vh;
+            opacity: 1;
+            transition: .3s;
+            animation: anim 0.8s ease-in-out;
+
+            @keyframes anim {
+              0% {transform: translate(100%);}
+              100% {transform: translate(0);}
             }
           }
         }
