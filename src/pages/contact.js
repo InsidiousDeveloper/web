@@ -11,7 +11,7 @@ export const Contact = () => {
         })
     }, [])
 
-    const {request, loading} = useHttp()
+    const {request, loading, error} = useHttp()
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -26,7 +26,9 @@ export const Contact = () => {
     const formHandler = async () => {
         try {
             const data = await request('/contact', 'POST', {...form})
-            // alert(data.message)
+            if (!error) {
+                alert('Sent successfully')
+            }
         } catch (e) {}
 
         setForm({
