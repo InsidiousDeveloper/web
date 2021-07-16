@@ -1,5 +1,5 @@
 import {Contact} from "./pages/contact"
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import {Main} from "./pages/main";
 import {Navbar} from "./pages/navbar";
 import {Footer} from "./pages/footer";
@@ -22,9 +22,14 @@ function App() {
 
     if (loggedIn === true) {
         return (
-            <div>
-                <Messages />
-            </div>
+            <BrowserRouter>
+                <Route path="/admin/allmessages">
+                    <Messages />
+                </Route>
+                <Route path="/admin" exact>
+                    {loggedIn ? <Redirect to="/admin/allmessages" /> : <AuthPage />}
+                </Route>
+            </BrowserRouter>
         )
     }
 

@@ -9,7 +9,7 @@ export const Messages = () => {
 
     const fetchMessages = useCallback(async () => {
         try {
-            const fetched = await request('/admin', 'GET', null)
+            const fetched = await request('/admin/allmessages', 'GET', null)
             setMessages(fetched)
         } catch (e) {
             console.log(e.message)
@@ -22,7 +22,7 @@ export const Messages = () => {
 
     const deleteMessage = async (msg) => {
         try {
-            const deletedMessage = await request(`/admin`, 'DELETE', {msg})
+            const deletedMessage = await request(`/admin/allmessages`, 'DELETE', {msg})
 
             console.log('removed')
         } catch (e) {
