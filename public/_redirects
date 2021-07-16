@@ -1,2 +1,2 @@
-https://eager-hypatia-cda478.netlify.app/contact/*  https://mytrialweb.herokuapp.com/contact/:splat  200
+/contact  https://mytrialweb.herokuapp.com/contact/:splat  200
 /*    /index.html    200

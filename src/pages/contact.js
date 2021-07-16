@@ -94,7 +94,7 @@ export const Contact = () => {
                                     onChange={handleChanges}
                                 /><br/>
                                 <input
-                                    type="text"
+                                    type="number"
                                     placeholder={t('phone_number')}
                                     required={true}
                                     name="phone"

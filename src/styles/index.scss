@@ -80,7 +80,7 @@ body {
 
           li {
             display: flex;
-            margin: auto 10px;
+            margin: auto 0;
   
             a, .toggler {
               display: block;
@@ -240,9 +240,13 @@ body {
   }
 }
 .container.main {
-  background: url(../images/xhome-banner.jpg.pagespeed.ic.HLGqKgJtIp.webp) no-repeat;
+  background: url(../images/main.jpg) no-repeat;
   background-size: cover;
+  //filter: sepia(50%);
 
+  .layer {
+    background: rgba(40, 100, 145, 0.3);
+  }
 
   .content {
 
@@ -255,16 +259,16 @@ body {
       text-transform: uppercase;
 
       p {
-        color: $darkBlue;
+        color: orange;
         font-size: $fontMedium;
         font-weight: 600;
       }
 
       h1 {
         margin-top: 20px;
-        color: $darkBlue;
+        color: #111;
         font-size: $fontXXL;
-        font-family: 'Rubik';
+        font-family: 'Rubik', serif;
       }
 
       .btns {
@@ -474,7 +478,8 @@ body {
       transition: .3s;
 
       .profile-photo {
-        width: 8rem;
+        @include flex-center();
+        width: 100%;
       }
 
       .profile-info {
@@ -782,6 +787,7 @@ ul.social {
   }
 }
 .faq-banner {
+  margin-top: 4rem;
   width: 100%;
   height: 40vh;
   background: url("../images/faq-tbs-msc.png") no-repeat;
@@ -821,7 +827,7 @@ ul.social {
         position: absolute;
         top: 0;
         right: 0;
-        content: '>';
+        content: '<';
         transition: .3s;
         transform: rotate(-90deg);
       }
@@ -830,8 +836,8 @@ ul.social {
         position: absolute;
         top: 0;
         right: 0;
-        content: '>';
-        transform: rotate(90deg);
+        content: '<';
+        transform: rotate(-270deg);
       }
 
       .answer {
@@ -847,13 +853,14 @@ ul.social {
   }
 }
 footer {
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(to bottom, #141E30, #243B55);
   font-family: 'Comfortaa';
 
   .info-section {
+    @include maxWidth();
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     color: white;
     padding: 1rem;
@@ -950,6 +957,139 @@ footer {
       list-style-type: none;
       text-align: left;
       color: #7b838a;
+    }
+  }
+}
+.container.admin {
+  position: relative;
+
+  .colors {
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+
+  .left-color {
+    left: 0;
+    background: teal;
+    width: 40%;
+  }
+
+  .right-color {
+    right: 0;
+    background: whitesmoke;
+    width: 60%;
+  }
+
+  .content {
+    @include flex-center();
+    min-height: 100vh;
+    z-index: 3;
+
+    .form-wrapper {
+      width: 70%;
+      display: grid;
+      grid-template-columns: 30% 70%;
+      z-index: 100;
+      height: 20rem;
+      box-shadow: 0 0 50px #00000060;
+
+      .left-side {
+        background: teal;
+        padding: 10px;
+        @include flex-center();
+        flex-direction: column;
+
+        img {
+          width: 8rem;
+        }
+
+        h3 {
+          margin-top: 2rem;
+          color: white;
+          width: 100%;
+          text-transform: capitalize;
+          font-family: Rubik, serif;
+          font-weight: normal;
+          text-align: center;
+          font-size: $fontMedium;
+        }
+      }
+
+      .right-side {
+        @include flex-center();
+        flex-direction: column;
+        font-family: Rubik, serif;
+
+        h2 {
+          font-size: $fontXL;
+          color: #333;
+          margin-bottom: 2rem;
+        }
+
+        input {
+          width: 80%;
+          background: transparent;
+          border: none;
+          border-bottom: 1px solid dimgrey;
+          padding: 15px;
+          font-size: $fontMedium;
+        }
+
+        button {
+          width: 60%;
+          border-radius: 5px;
+          padding: 10px;
+          font-size: $fontMedium;
+          border: none;
+          background: rgba(100, 100, 100, 0.8);
+          margin-top: 2rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.messages {
+  width: 100%;
+
+  .title {
+    font-family: Comfortaa, serif;
+    font-size: $fontXL;
+    color: white;
+    background: #232526;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .content {
+    @include maxWidth();
+
+    .all-messages {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+
+      .message {
+        font-family: Comfortaa, serif;
+        padding: 1rem;
+        line-height: 1.3;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          h3 {
+            font-weight: normal;
+            color: #222;
+          }
+        }
+      }
+
+      .message:nth-child(odd) {
+        background: #ccc;
+      }
     }
   }
 }

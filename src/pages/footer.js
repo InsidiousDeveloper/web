@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import Aos from 'aos'
-import Logo from '../images/logo.jpg'
+import Logo from '../images/logo2.png'
 import {NavLink} from 'react-router-dom'
 import i18n from "i18next"
 import { initReactI18next, useTranslation } from "react-i18next"
@@ -43,7 +43,7 @@ export const Footer = () => {
     return (
         <footer>
             <div className="content">
-                <div data-aos="zoom-in-up" className="info-section">
+                <div data-aos="zoom-in" className="info-section">
                     <div className="contact-info">
                         <div className="logo">
                             <img src={Logo} alt="Company Logo"/>

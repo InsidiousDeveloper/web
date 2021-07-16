@@ -45,10 +45,17 @@ export const Main = () => {
             const textSecond = Math.floor((gap % minute) / second)
 
             try {
-                document.querySelector('.days').innerHTML = textDay
-                document.querySelector('.hours').innerHTML = textHour
-                document.querySelector('.minutes').innerHTML = textMinute
-                document.querySelector('.seconds').innerHTML = textSecond
+                if (gap > 0) {
+                    document.querySelector('.days').innerHTML = textDay
+                    document.querySelector('.hours').innerHTML = textHour
+                    document.querySelector('.minutes').innerHTML = textMinute
+                    document.querySelector('.seconds').innerHTML = textSecond
+                } else {
+                    document.querySelector('.days').innerHTML = 0
+                    document.querySelector('.hours').innerHTML = 0
+                    document.querySelector('.minutes').innerHTML = 0
+                    document.querySelector('.seconds').innerHTML = 0
+                }
             } catch (e) {
 
             }
@@ -67,13 +74,15 @@ export const Main = () => {
     return (
         <>
             <div className="container main">
-                <div className="content">
-                    <div className="offer">
-                        <p>Best online education service in the world</p>
-                        <h1>One step ahead this season</h1>
-                        <div className="btns">
-                            <button>Learn more</button>
-                            <button>See course</button>
+                <div className="layer">
+                    <div className="content">
+                        <div className="offer">
+                            <p>Best logistics education center in Tashkent</p>
+                            <h1>One step ahead this season</h1>
+                            <div className="btns">
+                                <button>Learn more</button>
+                                <button>See course</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +121,7 @@ export const Main = () => {
                         <div className="courses">
                             <div className="course" data-aos="fade-up">
                                 <div className="upper">
-                                    <img src={img1} alt="First image"/>
+                                    <img src={img1} alt="First"/>
                                 </div>
                                 <div className="lower">
                                     <div className="price">$25</div>
@@ -124,7 +133,7 @@ export const Main = () => {
                             </div>
                             <div className="course" data-aos="fade-up">
                                 <div className="upper">
-                                    <img src={img2} alt="Second image"/>
+                                    <img src={img2} alt="Second"/>
                                 </div>
                                 <div className="lower">
                                     <div className="price">$25</div>
@@ -136,7 +145,7 @@ export const Main = () => {
                             </div>
                             <div className="course" data-aos="fade-up">
                                 <div className="upper">
-                                    <img src={img3} alt="Third image"/>
+                                    <img src={img3} alt="Third"/>
                                 </div>
                                 <div className="lower">
                                     <div className="price">$25</div>
