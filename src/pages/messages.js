@@ -18,7 +18,7 @@ export const Messages = () => {
 
     useEffect(() => {
         fetchMessages()
-    }, [fetchMessages])
+    }, [])
 
     const deleteMessage = async (msg) => {
         try {
