@@ -1,3 +1,3 @@
 /contact  https://mytrialweb.herokuapp.com/contact/:splat  200
-/admin/allmessages https://mytrialweb.herokuapp.com/admin/allmessages/:splat  200
+/admin https://mytrialweb.herokuapp.com/admin/allmessages/:splat  200
 /*    /index.html    200
