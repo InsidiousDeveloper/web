@@ -1,14 +1,6 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Aos from 'aos'
-
-import img1 from '../images/xc1.jpg.pagespeed.ic.T_uhS3u3y1.webp'
-import img2 from '../images/xc2.jpg.pagespeed.ic.wcDJnw-bpA.webp'
-import img3 from '../images/xc3.jpg.pagespeed.ic.N4hOq0xjdk.webp'
-
-import person1 from '../images/xt1.jpg.pagespeed.ic.K0AD1qx4ww.webp'
-import person2 from '../images/xt2.jpg.pagespeed.ic.Wnnxjw3cXO.webp'
-import person3 from '../images/xt3.jpg.pagespeed.ic.l__z3e6GGe.webp'
-import person4 from '../images/xt4.jpg.pagespeed.ic.BmplIR4tbn.webp'
+import axios from 'axios'
 
 import banner1 from '../images/xe1.jpg.pagespeed.ic.Xjf7ZFLDLk.webp'
 import banner2 from '../images/xe2.jpg.pagespeed.ic.3XyEgSPjzA.webp'
@@ -18,12 +10,23 @@ import client2 from '../images/client2.webp'
 
 export const Main = () => {
 
+    const [courses, setCourses] = useState([])
+    const [people, setPeople] = useState([])
+
     useEffect(() => {
 
         Aos.init({
             duration: 3000,
             offset: 200
         })
+
+        axios.get('/adminpanel/modify')
+            .then((res) => setCourses(res.data))
+            .catch((err) => console.log(err))
+
+        axios.get('/adminpanel/employees')
+            .then((res) => setPeople(res.data))
+            .catch((err) => console.log(err))
 
     },[])
 
@@ -119,42 +122,21 @@ export const Main = () => {
                             <p>Replenish man have thing gathering lights yielding shall you</p>
                         </div>
                         <div className="courses">
-                            <div className="course" data-aos="fade-up">
-                                <div className="upper">
-                                    <img src={img1} alt="First"/>
-                                </div>
-                                <div className="lower">
-                                    <div className="price">$25</div>
-                                    <button>Design</button>
-                                    <div className="card-title">Custom Product Design</div>
-                                    <p>One make creepeth man bearing their one firmament won't fowl meat over sea</p>
-                                    <div className="author-info"></div>
-                                </div>
-                            </div>
-                            <div className="course" data-aos="fade-up">
-                                <div className="upper">
-                                    <img src={img2} alt="Second"/>
-                                </div>
-                                <div className="lower">
-                                    <div className="price">$25</div>
-                                    <button>Design</button>
-                                    <div className="card-title">Social Media Network</div>
-                                    <p>One make creepeth man bearing their one firmament won't fowl meat over sea</p>
-                                    <div className="author-info"></div>
-                                </div>
-                            </div>
-                            <div className="course" data-aos="fade-up">
-                                <div className="upper">
-                                    <img src={img3} alt="Third"/>
-                                </div>
-                                <div className="lower">
-                                    <div className="price">$25</div>
-                                    <button>Design</button>
-                                    <div className="card-title">Computer Engineering</div>
-                                    <p>One make creepeth man bearing their one firmament won't fowl meat over sea</p>
-                                    <div className="author-info"></div>
-                                </div>
-                            </div>
+                            {courses.map((course, index) => {
+                                return (
+                                    <div className="course" key="index" data-aos="fade-up">
+                                        <div className="upper">
+                                            <img src={course.image} alt="Course image"/>
+                                        </div>
+                                        <div className="lower">
+                                            <div className="price">$ {course.price}</div>
+                                            <button>Design</button>
+                                            <div className="card-title">{course.title}</div>
+                                            <p>{course.description}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
@@ -193,46 +175,20 @@ export const Main = () => {
                             <p>Replenish man have thing gathering lights yielding shall you</p>
                         </div>
                         <div className="cards">
-                            <div className="person" data-aos="zoom-in">
-                                <div className="profile-photo">
-                                    <img src={person1} alt="Person 1"/>
-                                </div>
-                                <div className="profile-info">
-                                    <div className="profile-title">Mated Nithan</div>
-                                    <p>Sr. Web Designer</p>
-                                    <p className="description">If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                                </div>
-                            </div>
-                            <div className="person" data-aos="zoom-in">
-                                <div className="profile-photo">
-                                    <img src={person2} alt="Person 2"/>
-                                </div>
-                                <div className="profile-info">
-                                    <div className="profile-title">David Cameron</div>
-                                    <p>Sr. Web Designer</p>
-                                    <p className="description">If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                                </div>
-                            </div>
-                            <div className="person" data-aos="zoom-in">
-                                <div className="profile-photo">
-                                    <img src={person3} alt="Person 3"/>
-                                </div>
-                                <div className="profile-info">
-                                    <div className="profile-title">Jain Redmel</div>
-                                    <p>Sr. Faculty Data Science</p>
-                                    <p className="description">If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                                </div>
-                            </div>
-                            <div className="person" data-aos="zoom-in">
-                                <div className="profile-photo">
-                                    <img src={person4} alt="Person 4"/>
-                                </div>
-                                <div className="profile-info">
-                                    <div className="profile-title">Nathan Macken</div>
-                                    <p>Sr. Faculty Data Science</p>
-                                    <p className="description">If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                                </div>
-                            </div>
+                            {people.map((pers, index) => {
+                                return (
+                                    <div key={index} className="person" data-aos="zoom-in">
+                                        <div className="profile-photo">
+                                            <img src={`http://localhost:5000/${pers.image}`} alt="Person card"/>
+                                        </div>
+                                        <div className="profile-info">
+                                            <div className="profile-title">{pers.person}</div>
+                                            <p>{pers.position}</p>
+                                            <p className="description">{pers.description}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

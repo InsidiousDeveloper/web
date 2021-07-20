@@ -1,10 +1,12 @@
 import React, {useContext, useState} from 'react'
 import {Context} from "../context/admincontext";
 import logo from '../images/logo.jpg'
+import {useHistory} from "react-router-dom";
 
 export const AuthPage = () => {
 
     const {setLoggedIn} = useContext(Context)
+    const history = useHistory()
 
     const password = '123456'
     const user = 'admin'
@@ -22,7 +24,10 @@ export const AuthPage = () => {
 
     const validation = () => {
         if (credentials.user === user && credentials.password === password) {
-            setLoggedIn(true)
+            setLoggedIn(prev => !prev)
+            return history.push('/adminpanel')
+        } else {
+            alert('Incorrect credentials were provided')
         }
     }
 

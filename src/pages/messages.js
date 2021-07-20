@@ -1,16 +1,15 @@
-import React, {useCallback, useEffect, useState} from 'react'
-import {useHttp} from "../hooks/http.hook";
+import React, {useEffect, useState, useCallback} from 'react'
+import {useHttp} from "../hooks/http.hook"
 
 export const Messages = () => {
 
-    const {request, loading} = useHttp()
     const [messages, setMessages] = useState([])
-    const [deleted, setDeleted] = useState(null)
+    const {request} = useHttp()
 
     const fetchMessages = useCallback(async () => {
         try {
-            const fetched = await request('/admin/allmessages', 'GET', null)
-            setMessages(fetched)
+            const message = await request('/adminpanel/messages', 'GET', null)
+            setMessages(message)
         } catch (e) {
             console.log(e.message)
         }
@@ -18,38 +17,36 @@ export const Messages = () => {
 
     useEffect(() => {
         fetchMessages()
-    }, [])
-
-    const deleteMessage = async (msg) => {
-        try {
-            const deletedMessage = await request(`/admin/allmessages`, 'DELETE', {msg})
-
-            console.log('removed')
-        } catch (e) {
-            console.log(e.message)
-        }
-        const remove = document.getElementById(`${msg}`)
-        remove.parentNode.removeChild(remove)
-        console.log(msg)
-        setDeleted(prev => !prev)
-    }
+    }, [fetchMessages])
 
     return (
-        <div className="messages">
-            <div className="title">
-                Contacted People
-            </div>
+        <div className="container msg-wrapper">
+            <h2>All messages</h2>
             <div className="content">
                 <div className="all-messages">
-                    {messages.map((message, index) => {
+                    {messages.map((msg, index) => {
                         return (
-                            <div key={message._id} className="message" id={message._id}>
-                                <div>Name: <h3>{message.name}</h3></div>
-                                <div>Email: <h3>{message.email}</h3></div>
-                                <div>Phone number: <h3>{message.phone}</h3></div>
-                                <div>Sent message: <h3>{message.message}</h3></div>
-                                <div>Date: <h3>{new Date(message.date).toLocaleString()}</h3></div>
-                                {/*<button onClick={() => deleteMessage(message._id)}>Delete</button>*/}
+                            <div className="msg" key={index}>
+                                <div className="message-control">
+                                    <h3>Name: </h3>
+                                    <span>{msg.name}</span>
+                                </div>
+                                <div className="message-control">
+                                    <h3>Email: </h3>
+                                    <span>{msg.email}</span>
+                                </div>
+                                <div className="message-control">
+                                    <h3>Phone: </h3>
+                                    <span>{msg.phone}</span>
+                                </div>
+                                <div className="message-control">
+                                    <h3>Message: </h3>
+                                    <span>{msg.message}</span>
+                                </div>
+                                <div className="message-control">
+                                    <h3>Date & Time: </h3>
+                                    <span>{new Date(msg.date).toLocaleString()}</span>
+                                </div>
                             </div>
                         )
                     })}
